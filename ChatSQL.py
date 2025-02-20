@@ -11,13 +11,13 @@ import os
 
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
-import base64
+# import base64
 
-def get_base64_image(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode("utf-8")
+# def get_base64_image(image_path):
+#     with open(image_path, "rb") as image_file:
+#         return base64.b64encode(image_file.read()).decode("utf-8")
 
-base64_image = get_base64_image("https://raw.githubusercontent.com/NEELDUDHAT/ChatSQL/main/logo.png")
+# base64_image = get_base64_image("https://raw.githubusercontent.com/NEELDUDHAT/ChatSQL/main/logo.png")
 
 
 def init_database(user: str, password: str, host: str, port: str, database: str) -> SQLDatabase:
@@ -108,7 +108,7 @@ st.set_page_config(page_title="Chat with MySQL", page_icon=":speech_balloon:")
 st.markdown(
     f"""
     <h1 style='display: flex; align-items: center;'>
-        <img src='data:image/jpeg;base64,{base64_image}' width='50' style='margin-right: 10px;'> 
+        # <img src='data:image/jpeg;base64,{base64_image}' width='50' style='margin-right: 10px;'> 
         ChatSQL: Your Database Assistant
     </h1>
     """, unsafe_allow_html=True
