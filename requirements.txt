@@ -54,8 +54,8 @@ langchain
 langchain-community
 langchain-core
 langsmith
-langchain-groq==0.1.6
-langchain-openai==0.1.8
+langchain-groq
+langchain-openai
 langchain-text-splitters==0.2.0
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
@@ -94,8 +94,7 @@ PyMuPDFb==1.24.3
 PyPDF2==3.0.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
-pytz==2024.1
-pywin32==306
+pytz==2024.1    
 PyYAML==6.0.1
 pyzmq==26.0.3
 referencing==0.35.1
