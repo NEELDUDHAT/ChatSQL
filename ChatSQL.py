@@ -17,7 +17,7 @@ def get_base64_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
 
-base64_image = get_base64_image("D:/semester 5/Langchain/logo.png")
+base64_image = get_base64_image("https://raw.githubusercontent.com/NEELDUDHAT/ChatSQL/refs/heads/main/logo.png")
 
 
 def init_database(user: str, password: str, host: str, port: str, database: str) -> SQLDatabase:
