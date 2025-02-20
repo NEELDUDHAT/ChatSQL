@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
@@ -6,6 +7,9 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 import streamlit as st
+import os
+
+os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
 import base64
 
@@ -97,6 +101,7 @@ if "chat_history" not in st.session_state:
       AIMessage(content="Hello! I'm a SQL assistant. Ask me anything about your database."),
     ]
 
+load_dotenv()
 
 st.set_page_config(page_title="Chat with MySQL", page_icon=":speech_balloon:")
 
