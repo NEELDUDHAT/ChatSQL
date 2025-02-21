@@ -12,7 +12,7 @@ import os
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
 def init_database(user: str, password: str, host: str, port: str, database: str) -> SQLDatabase:
-  db_uri = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/{database}"
+  db_uri = f"mysql://{user}:{password}@shortline.proxy.rlwy.net:15207/{database}"
   return SQLDatabase.from_uri(db_uri)
 
 def get_sql_chain(db):
