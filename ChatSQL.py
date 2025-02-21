@@ -8,6 +8,7 @@ from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 import streamlit as st  
 import os
+import requests
 import pymysql
 pymysql.install_as_MySQLdb()
 
@@ -15,9 +16,12 @@ os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
 import base64
 
-def get_base64_image(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode("utf-8")
+def get_base64_image(image_url):
+    response = requests.get(image_url)
+    if response.status_code == 200:
+        return base64.b64encode(response.content).decode("utf-8")
+    else:
+        raise Exception(f"Failed to load image: {response.status_code}")
 
 base64_image = get_base64_image("https://res.cloudinary.com/dfgyr47rr/image/upload/v1740170071/chatsql-logo.png")
 
