@@ -8,9 +8,20 @@ from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 import streamlit as st  
 import os
+import pymysql
+pymysql.install_as_MySQLdb()
 
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
+import base64
+
+def get_base64_image(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
+
+base64_image = get_base64_image("D:/semester 5/Langchain/logo.png")
+
+# mysql://root:KrwvVahpAdevnsuMcUYGytynyekjxJxs@shortline.proxy.rlwy.net:15207/railway
 def init_database(user: str, password: str, host: str, port: str, database: str) -> SQLDatabase:
   db_uri = f"mysql://{user}:{password}@shortline.proxy.rlwy.net:15207/{database}"
   return SQLDatabase.from_uri(db_uri)
@@ -99,6 +110,7 @@ st.set_page_config(page_title="Chat with MySQL", page_icon=":speech_balloon:")
 st.markdown(
     f"""
     <h1 style='display: flex; align-items: center;'>
+        <img src='data:image/jpeg;base64,{base64_image}' width='50' style='margin-right: 10px;'> 
         ChatSQL: Your Database Assistant
     </h1>
     """, unsafe_allow_html=True
